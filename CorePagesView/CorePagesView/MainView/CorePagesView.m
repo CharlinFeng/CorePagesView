@@ -82,6 +82,11 @@
 @property (nonatomic,assign) NSUInteger deceleratingPage;
 
 
+/**
+ *  上一次scrollView在didScroll中计算页码所使用的宽度
+ */
+@property (nonatomic,assign) CGFloat lastCalWidth;
+
 @end
 
 
@@ -102,6 +107,7 @@
         
         //模型数组
         pagesView.pageModels=pageModels;
+        
     });
     
     return pagesView;
@@ -126,10 +132,19 @@
     //隐藏水平滚动条
     self.scrollView.showsHorizontalScrollIndicator=NO;
     
+    //初始化
+    self.lastCalWidth=self.width;
+    
     //事件处理
     [self event];
 }
 
+
+-(void)dealloc{
+    
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 /**
  *  事件处理
@@ -153,6 +168,7 @@
  */
 -(void)deviceRotate{
 
+    self.pagesBarView.page=self.page;
     [self scrollViewActionWithPage:self.page];
     [self adjustContentSize];
 }
@@ -353,12 +369,24 @@
  */
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    CGFloat offsetX=scrollView.contentOffset.x;
+    
+    CGFloat width=self.width;
+    
+    if(_lastCalWidth != width && _lastCalWidth!=600){
+        
+        _lastCalWidth=width;
+        return;
+    }
+    
     //获取页面
-    NSInteger page=(scrollView.contentOffset.x / scrollView.bounds.size.width) + .5f;
+    NSInteger page=(offsetX / width) + .5f;
     
     [self handleForPage:page];
 
     self.page=page;
+    
+    _lastCalWidth=width;
 }
 
 
@@ -505,7 +533,7 @@
     if(_deceleratingPage == deceleratingPage) return;
     
     _deceleratingPage = deceleratingPage;
-    NSLog(@"来了================");
+   
     //处理视图生命周期
     [self handleViewLife:NO];
 }

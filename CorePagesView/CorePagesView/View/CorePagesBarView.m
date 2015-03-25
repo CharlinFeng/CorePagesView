@@ -64,6 +64,20 @@
     
     //隐藏水平滚动条
     self.showsHorizontalScrollIndicator=NO;
+    
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenRotate) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+-(void)screenRotate{
+    [self scrollViewFitContentOffsetWithBtnSelected];
+}
+
+
+-(void)dealloc{
+    
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -108,7 +122,11 @@
         //设置字体
         btn.titleLabel.font=self.barFont;
         
-        CGSize size=CGSizeMake(fontSize.width, CorePagesBarViewH);
+        CGFloat btnW=fontSize.width + CorePagesBarBtnExtraWidth;
+        
+        if(CorePagesBarBtnUseCustomWidth) btnW = CorePagesBarBtnWidth + CorePagesBarBtnExtraWidth;
+        
+        CGSize size=CGSizeMake(btnW, CorePagesBarViewH);
         
         btn.bounds=(CGRect){CGPointZero,size};
         

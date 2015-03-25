@@ -14,6 +14,30 @@
 
 
 /**
+ *  动态值
+ */
+
+/**
+ *  顶部按钮的基本宽度
+ */
+#define CorePagesBarBtnWidth 100
+
+
+
+/**
+ *  顶部按钮的扩展宽度
+ */
+#define CorePagesBarBtnExtraWidth 60
+
+
+
+/**
+ *  是否使用自定义的宽度，如果不使用，则框架自行计算宽度
+ */
+#define CorePagesBarBtnUseCustomWidth NO
+
+
+/**
  *  bar条的高度
  */
 UIKIT_EXTERN CGFloat const CorePagesBarViewH;
