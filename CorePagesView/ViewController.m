@@ -35,7 +35,6 @@
 
 
 
-
 -(CorePagesView *)pagesView{
     
     if(_pagesView==nil){

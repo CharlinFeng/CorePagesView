@@ -17,11 +17,13 @@
 
 
 
-
-
-
-/*
+/**
  *  快速实例化对象
+ *
+ *  @param ownerVC    本视图所属的控制器
+ *  @param pageModels 模型数组
+ *
+ *  @return 实例
  */
 +(instancetype)viewWithOwnerVC:(UIViewController *)ownerVC pageModels:(NSArray *)pageModels;
 
