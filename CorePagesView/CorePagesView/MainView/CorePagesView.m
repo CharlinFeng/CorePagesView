@@ -381,7 +381,7 @@
     
     //获取页面
     NSInteger page=(offsetX / width) + .5f;
-    
+    page = MIN(page, self.maxPage);
     [self handleForPage:page];
 
     self.page=page;
