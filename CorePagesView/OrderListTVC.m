@@ -7,6 +7,7 @@
 //
 
 #import "OrderListTVC.h"
+#import "UIScrollView+Refresh.h"
 
 @interface OrderListTVC ()
 
@@ -20,19 +21,42 @@
     self.view.layer.borderColor=[UIColor brownColor].CGColor;
     self.view.layer.borderWidth=1.0f;
     
+    //安装
+    [self.tableView addHeaderWithTarget:self action:@selector(header)];
+    [self.tableView addFooterWithTarget:self action:@selector(foorter)];
+
+    self.view.layer.borderColor = [UIColor redColor].CGColor;
+    self.view.layer.borderWidth = 4.0f;
 }
+
+
+-(void)header{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView headerSetState:CoreHeaderViewRefreshStateSuccessedResultDataShowing];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"_scrollViewOriginalInset=%@,%@",NSStringFromUIEdgeInsets(self.tableView.contentInset),NSStringFromCGPoint(self.tableView.contentOffset));
+    });
+}
+
+-(void)foorter{
+}
+
+
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"%i:viewDidAppear显示",_index);
+    
+    NSLog(@"_scrollViewOriginalInset=%@,%@",NSStringFromUIEdgeInsets(self.tableView.contentInset),NSStringFromCGPoint(self.tableView.contentOffset));
 }
 
 
 -(void)viewDidDisappear:(BOOL)animated{
     
     [super viewDidDisappear:animated];
-    NSLog(@"%i:viewDidDisappear消失",_index);
+    
 }
 
 
