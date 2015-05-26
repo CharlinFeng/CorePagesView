@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -43,7 +43,7 @@
             </constraints>
             <connections>
                 <outlet property="pagesBarView" destination="TqU-zA-zGJ" id="YdB-4A-JAs"/>
-                <outlet property="pagesBarViewConstraint" destination="ZZN-Th-dhx" id="B8D-iD-RHh"/>
+                <outlet property="pagesBarViewHConstraint" destination="ZZN-Th-dhx" id="BbI-zy-V19"/>
                 <outlet property="scrollView" destination="fcz-xO-7qn" id="Wk9-Y8-jJ6"/>
             </connections>
             <point key="canvasLocation" x="-245" y="342"/>

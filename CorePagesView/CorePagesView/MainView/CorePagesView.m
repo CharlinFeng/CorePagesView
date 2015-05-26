@@ -44,7 +44,7 @@
 @property (nonatomic,assign) NSUInteger maxPage;
 
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *pagesBarViewConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *pagesBarViewHConstraint;
 
 @property (nonatomic,assign) CGFloat barH;
 
@@ -132,11 +132,18 @@
     //隐藏水平滚动条
     self.scrollView.showsHorizontalScrollIndicator=NO;
     
+    //高度修复
+    _pagesBarViewHConstraint.constant = CorePagesBarViewH;
+    
     //初始化
     self.lastCalWidth=self.width;
     
     //事件处理
     [self event];
+    
+    //设置值
+    _scrollView.contentInset =UIEdgeInsetsMake(CorePagesBarViewH, 0, 0, 0);
+    _scrollView.contentOffset = CGPointMake(0, -CorePagesBarViewH);
 }
 
 
@@ -234,9 +241,12 @@
         
         [self.scrollView addSubview:subView];
 
-        //字典记录
-        [self.indexDict setObject:subView forKey:@(page)];
-        
+        if(subView != nil){
+            
+            //字典记录
+            [self.indexDict setObject:subView forKey:@(page)];
+        }
+
         [self setNeedsLayout];
     });
 }
@@ -283,8 +293,9 @@
             }
             
         }else{
-            self.scrollView.contentInset=UIEdgeInsetsMake(44, 0, 0, 0);
-            frame.size.height=_originalFrame.size.height - self.barH;
+            self.scrollView.contentInset=UIEdgeInsetsMake(CorePagesBarViewH, 0, 0, 0);
+            
+            frame.size.height=_originalFrame.size.height - CorePagesBarViewH;
         }
         
         
@@ -321,7 +332,7 @@
 
 -(CGFloat)barH{
     
-    return _pagesBarViewConstraint.constant;
+    return _pagesBarViewHConstraint.constant;
     
 }
 
@@ -354,7 +365,7 @@
     
     CGFloat x =self.width * page;
     
-    CGPoint offset=CGPointMake(x, 0);
+    CGPoint offset=CGPointMake(x, -CorePagesBarViewH);
     
     [UIView animateWithDuration:CorePagesAnimDuration animations:^{
         [self.scrollView setContentOffset:offset animated:NO];

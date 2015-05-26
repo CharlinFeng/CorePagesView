@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="tlC-BS-j8V" customClass="CMView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CM.bundle/CMIcon" translatesAutoresizingMaskIntoConstraints="NO" id="y69-E2-e13">
+                    <rect key="frame" x="85" y="40" width="150" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="jVv-c7-DfV"/>
+                        <constraint firstAttribute="width" constant="150" id="tXa-kD-gqT"/>
+                    </constraints>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yo2-Dv-X6c">
+                    <rect key="frame" x="150" y="230" width="20" height="20"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在努力加载中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEk-UZ-8Sy">
+                    <rect key="frame" x="90" y="168" width="140" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载失败，请点击屏幕重试" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AP-IZ-e9n">
+                    <rect key="frame" x="76" y="202" width="168" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-cg-R0e">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClick:" destination="tlC-BS-j8V" eventType="touchUpInside" id="1cS-ch-Zs7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="Yo2-Dv-X6c" secondAttribute="centerX" id="3kg-QG-Bpv"/>
+                <constraint firstItem="A3p-cg-R0e" firstAttribute="top" secondItem="tlC-BS-j8V" secondAttribute="top" id="B5T-GF-GtO"/>
+                <constraint firstAttribute="centerY" secondItem="NEk-UZ-8Sy" secondAttribute="centerY" constant="-20" id="Ed2-7B-4OH"/>
+                <constraint firstAttribute="centerY" secondItem="y69-E2-e13" secondAttribute="centerY" constant="70" id="Frd-0T-ugw"/>
+                <constraint firstAttribute="centerY" secondItem="0AP-IZ-e9n" secondAttribute="centerY" constant="-50" id="L8A-7i-2z1"/>
+                <constraint firstAttribute="centerY" secondItem="Yo2-Dv-X6c" secondAttribute="centerY" constant="-80" id="fIY-fd-xeR"/>
+                <constraint firstAttribute="trailing" secondItem="A3p-cg-R0e" secondAttribute="trailing" id="fcs-NI-Tkg"/>
+                <constraint firstAttribute="bottom" secondItem="A3p-cg-R0e" secondAttribute="bottom" id="itV-hS-2k4"/>
+                <constraint firstAttribute="centerX" secondItem="y69-E2-e13" secondAttribute="centerX" id="lCz-iS-rSB"/>
+                <constraint firstAttribute="centerX" secondItem="NEk-UZ-8Sy" secondAttribute="centerX" id="mXf-wb-Lzv"/>
+                <constraint firstItem="A3p-cg-R0e" firstAttribute="leading" secondItem="tlC-BS-j8V" secondAttribute="leading" id="qxC-Zj-ysA"/>
+                <constraint firstAttribute="centerX" secondItem="0AP-IZ-e9n" secondAttribute="centerX" id="yEv-Tm-JHX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="idv" destination="Yo2-Dv-X6c" id="aZS-U5-onS"/>
+                <outlet property="idvMarginConstraint" destination="fIY-fd-xeR" id="dO8-Of-5Pw"/>
+                <outlet property="imageView" destination="y69-E2-e13" id="Nj1-kN-hOe"/>
+                <outlet property="msgLabel" destination="NEk-UZ-8Sy" id="QUR-mc-99a"/>
+                <outlet property="msgLabelMarginConstraint" destination="Ed2-7B-4OH" id="UcI-ae-wAa"/>
+                <outlet property="subMsgLabel" destination="0AP-IZ-e9n" id="qsb-aL-THT"/>
+                <outlet property="subMsgMarginConstraint" destination="L8A-7i-2z1" id="LyZ-DV-ZyN"/>
+            </connections>
+            <point key="canvasLocation" x="-115" y="97"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CM.bundle/CMIcon" width="108" height="52"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
