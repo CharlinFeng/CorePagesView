@@ -13,7 +13,7 @@
 
 框架截图 SHOW
 ===============
-![image](./CorePagesView/show.gif)<br /><br />
+![image](./CorePagesView/show2.gif)<br /><br />
 <br />
 
 
