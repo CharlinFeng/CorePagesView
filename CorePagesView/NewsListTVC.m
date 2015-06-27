@@ -37,7 +37,7 @@
     
     LTConfigModel *configModel=[[LTConfigModel alloc] init];
     //url
-    configModel.url=@"http://211.149.151.92/Carpenter/tp/index.php/Info/testdata";
+    configModel.url=@"http://211.149.151.92/Carpenter/index.php/Info/testdata";
     //请求方式
     configModel.httpMethod=LTConfigModelHTTPMethodGET;
     //模型类

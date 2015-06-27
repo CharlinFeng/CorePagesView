@@ -8,8 +8,6 @@
 
 #import "CorePagesBarView.h"
 #import "CorePageModel.h"
-#import "CorePagesViewConst.h"
-#import "CorePagesViewConst.h"
 #import "CAAnimation+PagesViewBarShake.h"
 
 #define rgba(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
@@ -94,7 +92,6 @@
 }
 
 
-
 /**
  *  创建按钮
  */
@@ -122,11 +119,11 @@
         //设置字体
         btn.titleLabel.font=self.barFont;
         
-        CGFloat btnW=fontSize.width + CorePagesBarBtnExtraWidth;
+        CGFloat btnW=fontSize.width + _config.barBtnExtraWidth;
         
-        if(CorePagesBarBtnUseCustomWidth) btnW = CorePagesBarBtnWidth + CorePagesBarBtnExtraWidth;
+        if(_config.isBarBtnUseCustomWidth) btnW = _config.barBtnWidth + _config.barBtnExtraWidth;
         
-        CGSize size=CGSizeMake(btnW, CorePagesBarViewH);
+        CGSize size=CGSizeMake(btnW, _config.barViewH);
         
         btn.bounds=(CGRect){CGPointZero,size};
         
@@ -147,6 +144,7 @@
     
     __block NSInteger i=0;
     
+    CGFloat height = self.bounds.size.height;
     
     //调整frame
     [self.subviews enumerateObjectsUsingBlock:^(UIView *subView, NSUInteger idx, BOOL *stop) {
@@ -172,6 +170,8 @@
             //得到并赋值frame
             CGRect frame=btn.bounds;
             
+            frame.size.height = height;
+            
             if(index!=0){
                 //获取上一个控件
                 //上一个控件的indexPre
@@ -179,12 +179,12 @@
                 CorePagesBarBtn *btnPre=_btns[indexPre];
                 
                 //设置当前按钮的x
-                CGFloat x=CGRectGetMaxX(btnPre.frame) + CorePagesBarBtnMargin;
+                CGFloat x=CGRectGetMaxX(btnPre.frame) + _config.barBtnMargin;
                 
                 frame.origin.x = x;
             }else{
                 
-                frame.origin.x = CorePagesBarScrollMargin;
+                frame.origin.x = _config.barScrollMargin;
             }
             
             btn.frame=frame;
@@ -194,7 +194,7 @@
     }];
     
     //调整contentSize
-    CGFloat width=CGRectGetMaxX([self.btns.lastObject frame]) + CorePagesBarScrollMargin;
+    CGFloat width=CGRectGetMaxX([self.btns.lastObject frame]) + _config.barScrollMargin;
     
     self.contentSize=CGSizeMake(width, 0);
 }
@@ -203,10 +203,18 @@
 
 -(void)btnClick:(CorePagesBarBtn *)btn{
     
+    if(self.selectedBtn == btn) return;
+    
     self.selectedBtn=btn;
     
     //执行block
     if(_btnActionBlock!=nil) _btnActionBlock(btn,btn.tag);
+    
+    self.userInteractionEnabled = NO;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.config.animDuration * 3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.userInteractionEnabled = YES;
+    });
 }
 
 
@@ -221,12 +229,7 @@
     selectedBtn.selected=YES;
     
     self.pageChangeMax=ABS(_selectedBtn.tag - selectedBtn.tag)>1;
-    
-    if(self.pageChangeMax){
-        NSLog(@"跨度大");
-    }else{
-        NSLog(@"跨度小");
-    }
+
     
     //根据btn显示正确的lineView的frame
     BOOL isFirstBtn=_selectedBtn==nil;
@@ -268,7 +271,7 @@
     //构建contentOffset
     CGPoint offset=CGPointMake(leftX, 0);
     
-    [UIView animateWithDuration:CorePagesAnimDuration animations:^{
+    [UIView animateWithDuration:_config.animDuration animations:^{
         self.contentOffset=offset;
     }];
 }
@@ -284,14 +287,14 @@
     
     //取出btn最小的x和宽度
     CGFloat minX=CGRectGetMinX(btn.frame);
-    if(minX<0) minX=CorePagesBarScrollMargin;
+    if(minX<0) minX=_config.barScrollMargin;
     
     CGFloat width=btn.frame.size.width;
     
-    CGFloat lineViewX=minX - CorePagesBarLineViewPadding;
+    CGFloat lineViewX=minX - _config.barLineViewPadding;
     CGFloat lineViewH=2.0f;
-    CGFloat lineViewY=CorePagesBarViewH - lineViewH;
-    CGFloat lineViewW=width + CorePagesBarLineViewPadding * 2;
+    CGFloat lineViewY=_config.barViewH - lineViewH;
+    CGFloat lineViewW=width + _config.barLineViewPadding * 2;
     
     CGRect frame=CGRectMake(lineViewX, lineViewY, lineViewW, lineViewH);
     
@@ -299,7 +302,7 @@
         self.lineView.frame=frame;
     }else{
         
-        [UIView animateWithDuration:CorePagesAnimDuration animations:^{
+        [UIView animateWithDuration:_config.animDuration animations:^{
             self.lineView.frame=frame;
         } completion:^(BOOL finished) {
 //            if(!self.pageChangeMax) return;
@@ -316,7 +319,7 @@
 -(UIFont *)barFont{
     
     if(!_barFont){
-        _barFont=[UIFont systemFontOfSize:CorePagesBarBtnFontPoint];
+        _barFont=[UIFont systemFontOfSize:_config.barBtnFontPoint];
     }
     
     return _barFont;
@@ -356,6 +359,7 @@
     
     self.selectedBtn=btn;
 }
+
 
 
 @end

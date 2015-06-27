@@ -52,8 +52,15 @@
         
         
         NSArray *pageModels=@[model1,model2,model3,model4];
+        
+        
+        //自定义配置
+        CorePagesViewConfig *config = [[CorePagesViewConfig alloc] init];
+        config.isBarBtnUseCustomWidth = YES;
+        config.barViewH = 80;
+        
 
-        _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels];
+        _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
     }
     
     return _pagesView;

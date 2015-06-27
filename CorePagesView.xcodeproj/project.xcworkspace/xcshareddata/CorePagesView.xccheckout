@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6B2015D4436429F47C792D67800C8954018A2739</key>
-		<string>../../CorePagesView/Frameworks/CoreList/</string>
+		<string>../../CorePagesView/Frameworks/CoreList</string>
 		<key>C094A7C9ECBE0E0D46C864B8A8853A58DDDD94EC</key>
 		<string>../..</string>
 	</dict>

@@ -8,10 +8,13 @@
 
 #import "CorePagesView.h"
 #import "CorePagesBarView.h"
-#import "CorePagesViewConst.h"
 
 
-@interface CorePagesView ()<UIScrollViewDelegate>
+@interface CorePagesView ()<UIScrollViewDelegate>{
+    
+    
+    CorePagesViewConfig  *_config;
+}
 
 @property (strong, nonatomic) IBOutlet CorePagesBarView *pagesBarView;
 
@@ -87,6 +90,9 @@
  */
 @property (nonatomic,assign) CGFloat lastCalWidth;
 
+
+@property (nonatomic,strong) CorePagesViewConfig *config;
+
 @end
 
 
@@ -94,10 +100,16 @@
 @implementation CorePagesView
 
 
-/*
+/**
  *  快速实例化对象
+ *
+ *  @param ownerVC    本视图所属的控制器
+ *  @param pageModels 模型数组
+ *  @param config     配置
+ *
+ *  @return 实例
  */
-+(instancetype)viewWithOwnerVC:(UIViewController *)ownerVC pageModels:(NSArray *)pageModels{
++(instancetype)viewWithOwnerVC:(UIViewController *)ownerVC pageModels:(NSArray *)pageModels config:(CorePagesViewConfig *)config{
     
     CorePagesView *pagesView=[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
     
@@ -107,6 +119,9 @@
         
         //模型数组
         pagesView.pageModels=pageModels;
+        
+        //设置配置
+        pagesView.config = config;
         
     });
     
@@ -133,7 +148,7 @@
     self.scrollView.showsHorizontalScrollIndicator=NO;
     
     //高度修复
-    _pagesBarViewHConstraint.constant = CorePagesBarViewH;
+    _pagesBarViewHConstraint.constant =self.config.barViewH;
     
     //初始化
     self.lastCalWidth=self.width;
@@ -142,9 +157,11 @@
     [self event];
     
     //设置值
-    _scrollView.contentInset =UIEdgeInsetsMake(CorePagesBarViewH, 0, 0, 0);
-    _scrollView.contentOffset = CGPointMake(0, -CorePagesBarViewH);
+    _scrollView.contentInset =UIEdgeInsetsMake(self.config.barViewH, 0, 0, 0);
+    _scrollView.contentOffset = CGPointMake(0, -self.config.barViewH);
+    self.pagesBarView.config = self.config;
 }
+
 
 
 -(void)dealloc{
@@ -293,9 +310,9 @@
             }
             
         }else{
-            self.scrollView.contentInset=UIEdgeInsetsMake(CorePagesBarViewH, 0, 0, 0);
+            self.scrollView.contentInset=UIEdgeInsetsMake(self.config.barViewH, 0, 0, 0);
             
-            frame.size.height=_originalFrame.size.height - CorePagesBarViewH;
+            frame.size.height=_originalFrame.size.height - self.config.barViewH;
         }
         
         
@@ -365,9 +382,9 @@
     
     CGFloat x =self.width * page;
     
-    CGPoint offset=CGPointMake(x, -CorePagesBarViewH);
+    CGPoint offset=CGPointMake(x, -self.config.barViewH);
     
-    [UIView animateWithDuration:CorePagesAnimDuration animations:^{
+    [UIView animateWithDuration:self.config.animDuration animations:^{
         [self.scrollView setContentOffset:offset animated:NO];
     }];
 }
@@ -537,6 +554,24 @@
     return _maxPage;
 }
 
+-(CorePagesViewConfig *)config{
+    
+    if(_config == nil){
+        
+        _config = [[CorePagesViewConfig alloc] init];
+    }
+    
+    return _config;
+}
+
+
+-(void)setConfig:(CorePagesViewConfig *)config{
+    
+    _config = config;
+    
+    self.pagesBarViewHConstraint.constant = config.barViewH;
+    self.pagesBarView.config = config;
+}
 
 
 -(void)setDeceleratingPage:(NSUInteger)deceleratingPage{

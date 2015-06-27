@@ -55,6 +55,7 @@
 		89B67E9C1B144DCC002D98B1 /* NewsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B67E9B1B144DCC002D98B1 /* NewsListModel.m */; };
 		89B67E9F1B144DF6002D98B1 /* NewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B67E9E1B144DF5002D98B1 /* NewsListCell.m */; };
 		89B67EA11B144EB7002D98B1 /* NewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B67EA01B144EB7002D98B1 /* NewsListCell.xib */; };
+		89BF37961B3E20D10090F120 /* CorePagesViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BF37951B3E20D10090F120 /* CorePagesViewConfig.m */; };
 		D672E1CA1AC1C5CC00F95030 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D672E1C61AC1C5CC00F95030 /* 1.png */; };
 		D672E1CB1AC1C5CC00F95030 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D672E1C71AC1C5CC00F95030 /* 2.png */; };
 		D672E1CC1AC1C5CC00F95030 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D672E1C81AC1C5CC00F95030 /* 3.png */; };
@@ -71,7 +72,6 @@
 		EE4A931B1ABBFDD000F01A48 /* CorePagesBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4A931A1ABBFDD000F01A48 /* CorePagesBarBtn.m */; };
 		EE6CB6A51ABC065D007F2E42 /* CorePagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB6A31ABC065D007F2E42 /* CorePagesView.m */; };
 		EE6CB6A61ABC065D007F2E42 /* CorePagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6CB6A41ABC065D007F2E42 /* CorePagesView.xib */; };
-		EE6CB6A91ABC06B2007F2E42 /* CorePagesViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB6A81ABC06B2007F2E42 /* CorePagesViewConst.m */; };
 		EE6CB6AD1ABC14A6007F2E42 /* CAAnimation+PagesViewBarShake.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB6AC1ABC14A6007F2E42 /* CAAnimation+PagesViewBarShake.m */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +177,8 @@
 		89B67E9D1B144DF5002D98B1 /* NewsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListCell.h; sourceTree = "<group>"; };
 		89B67E9E1B144DF5002D98B1 /* NewsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListCell.m; sourceTree = "<group>"; };
 		89B67EA01B144EB7002D98B1 /* NewsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsListCell.xib; sourceTree = "<group>"; };
+		89BF37941B3E20D10090F120 /* CorePagesViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePagesViewConfig.h; sourceTree = "<group>"; };
+		89BF37951B3E20D10090F120 /* CorePagesViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePagesViewConfig.m; sourceTree = "<group>"; };
 		D672E1C61AC1C5CC00F95030 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		D672E1C71AC1C5CC00F95030 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		D672E1C81AC1C5CC00F95030 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -203,8 +205,6 @@
 		EE6CB6A21ABC065D007F2E42 /* CorePagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePagesView.h; sourceTree = "<group>"; };
 		EE6CB6A31ABC065D007F2E42 /* CorePagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePagesView.m; sourceTree = "<group>"; };
 		EE6CB6A41ABC065D007F2E42 /* CorePagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CorePagesView.xib; sourceTree = "<group>"; };
-		EE6CB6A71ABC06B2007F2E42 /* CorePagesViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePagesViewConst.h; sourceTree = "<group>"; };
-		EE6CB6A81ABC06B2007F2E42 /* CorePagesViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePagesViewConst.m; sourceTree = "<group>"; };
 		EE6CB6AB1ABC14A6007F2E42 /* CAAnimation+PagesViewBarShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+PagesViewBarShake.h"; sourceTree = "<group>"; };
 		EE6CB6AC1ABC14A6007F2E42 /* CAAnimation+PagesViewBarShake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+PagesViewBarShake.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -649,8 +649,8 @@
 		EE6CB6A01ABC061B007F2E42 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				EE6CB6A71ABC06B2007F2E42 /* CorePagesViewConst.h */,
-				EE6CB6A81ABC06B2007F2E42 /* CorePagesViewConst.m */,
+				89BF37941B3E20D10090F120 /* CorePagesViewConfig.h */,
+				89BF37951B3E20D10090F120 /* CorePagesViewConfig.m */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -787,6 +787,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BF37961B3E20D10090F120 /* CorePagesViewConfig.m in Sources */,
 				89B67E821B144B9F002D98B1 /* CoreStatus.m in Sources */,
 				89B67E8E1B144BBA002D98B1 /* CMView.m in Sources */,
 				89B67E561B144B60002D98B1 /* NSData+Param.m in Sources */,
@@ -811,7 +812,6 @@
 				89B67E6C1B144B74002D98B1 /* MJConst.m in Sources */,
 				EE4A929D1ABBB94400F01A48 /* main.m in Sources */,
 				89B67CF11B142FE0002D98B1 /* CoreHeaderView.m in Sources */,
-				EE6CB6A91ABC06B2007F2E42 /* CorePagesViewConst.m in Sources */,
 				89B67E401B144B3E002D98B1 /* CoreLTVC.m in Sources */,
 				89B67E3B1B144B3E002D98B1 /* CoreListCommonModel.m in Sources */,
 				89B67E551B144B60002D98B1 /* NSData+MimeType.m in Sources */,

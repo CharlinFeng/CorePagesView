@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePagesBarBtn.h"
+#import "CorePagesViewConfig.h"
 
 @interface CorePagesBarView : UIScrollView
 
@@ -34,5 +35,6 @@
 @property (nonatomic,copy) void (^btnActionBlock)(CorePagesBarBtn *btn,NSUInteger selectedIndex);
 
 
+@property (nonatomic,strong) CorePagesViewConfig *config;
 
 @end

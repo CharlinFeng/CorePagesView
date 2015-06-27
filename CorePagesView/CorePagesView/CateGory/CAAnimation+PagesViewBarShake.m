@@ -22,7 +22,7 @@
     kfa.values=@[@(10),@(-8),@(6),@(-4),@(2),@(-1),@(0)];
     
     //设置时间
-    kfa.duration=0.8f;
+    kfa.duration=0.6f;
     
     //是否重复
     kfa.repeatCount=0;

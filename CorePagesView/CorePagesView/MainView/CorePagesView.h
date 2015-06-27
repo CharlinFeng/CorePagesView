@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePageModel.h"
+#import "CorePagesViewConfig.h"
 
 
 @interface CorePagesView : UIView
@@ -22,10 +23,11 @@
  *
  *  @param ownerVC    本视图所属的控制器
  *  @param pageModels 模型数组
+ *  @param config     配置
  *
  *  @return 实例
  */
-+(instancetype)viewWithOwnerVC:(UIViewController *)ownerVC pageModels:(NSArray *)pageModels;
++(instancetype)viewWithOwnerVC:(UIViewController *)ownerVC pageModels:(NSArray *)pageModels config:(CorePagesViewConfig *)config;
 
 
 
