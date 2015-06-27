@@ -5,17 +5,19 @@
     列表滚动视图，性能王者！
 <br />
 
-框架截图 SHOW
-===============
-![image](./CorePagesView/show.gif)<br /><br />
-<br />
-
 说明 EXPLAIN
 ===============
 本框架封装了友盟诸多细节，目前仅有分享模块，其他模块持续添加中。<br />
 成都iOS开发群：<br />
 二群：369870753（新开，新鲜着呢，快加） <br />
 一群：163865401（已爆满，加不上了）  <br /><br />
+
+框架截图 SHOW
+===============
+![image](./CorePagesView/show.gif)<br /><br />
+<br />
+
+
 
 <br />
 
@@ -66,32 +68,32 @@
     
     1.集成
         
-        -(CorePagesView *)pagesView{
+    -(CorePagesView *)pagesView{
     
-    if(_pagesView==nil){
+        if(_pagesView==nil){
+            
+            NewsListTVC *tvc1 = [[NewsListTVC alloc] init];
+            NewsListTVC *tvc2 = [[NewsListTVC alloc] init];
+            NewsListTVC *tvc3 = [[NewsListTVC alloc] init];
+            NewsListTVC *tvc4 = [[NewsListTVC alloc] init];
+            
+            
+            CorePageModel *model1=[CorePageModel model:tvc1 pageBarName:@"新闻1"];
+            CorePageModel *model2=[CorePageModel model:tvc2 pageBarName:@"新闻2"];
+            CorePageModel *model3=[CorePageModel model:tvc3 pageBarName:@"新闻3"];
+            CorePageModel *model4=[CorePageModel model:tvc4 pageBarName:@"新闻4"];
+            
+            
+            NSArray *pageModels=@[model1,model2,model3,model4];
+            
         
-        NewsListTVC *tvc1 = [[NewsListTVC alloc] init];
-        NewsListTVC *tvc2 = [[NewsListTVC alloc] init];
-        NewsListTVC *tvc3 = [[NewsListTVC alloc] init];
-        NewsListTVC *tvc4 = [[NewsListTVC alloc] init];
-        
-        
-        CorePageModel *model1=[CorePageModel model:tvc1 pageBarName:@"新闻1"];
-        CorePageModel *model2=[CorePageModel model:tvc2 pageBarName:@"新闻2"];
-        CorePageModel *model3=[CorePageModel model:tvc3 pageBarName:@"新闻3"];
-        CorePageModel *model4=[CorePageModel model:tvc4 pageBarName:@"新闻4"];
-        
-        
-        NSArray *pageModels=@[model1,model2,model3,model4];
-        
-        
-        //自定义配置。如果传nil，则为默认值（全局有效）
-        CorePagesViewConfig *config = [[CorePagesViewConfig alloc] init];
-        config.isBarBtnUseCustomWidth = YES;
-        config.barViewH = 80;
-        
-
-        _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
+            //自定义配置。如果传nil，则为默认值（全局有效）
+            CorePagesViewConfig *config = [[CorePagesViewConfig alloc] init];
+            config.isBarBtnUseCustomWidth = YES;
+            config.barViewH = 80;
+            
+    
+            _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
 
         }
         
@@ -100,8 +102,8 @@
     
     
     2.代码跳转：
-        /** 中转到指定页码 */
-        -(void)jumpToPage:(NSUInteger)jumpPage;
+    /** 中转到指定页码 */
+    -(void)jumpToPage:(NSUInteger)jumpPage;
     
     
     
