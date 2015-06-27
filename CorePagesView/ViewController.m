@@ -61,6 +61,7 @@
         
 
         _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
+
     }
     
     return _pagesView;

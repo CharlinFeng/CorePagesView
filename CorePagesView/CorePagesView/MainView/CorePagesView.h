@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
+/** 中转到指定页码 */
+-(void)jumpToPage:(NSUInteger)jumpPage;
+
 
 
 /**

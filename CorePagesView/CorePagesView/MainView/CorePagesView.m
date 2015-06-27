@@ -160,6 +160,7 @@
     _scrollView.contentInset =UIEdgeInsetsMake(self.config.barViewH, 0, 0, 0);
     _scrollView.contentOffset = CGPointMake(0, -self.config.barViewH);
     self.pagesBarView.config = self.config;
+
 }
 
 
@@ -178,8 +179,7 @@
     
      __weak typeof(self) weakSelf=self;
     self.pagesBarView.btnActionBlock=^(CorePagesBarBtn *btn,NSUInteger page){
-        weakSelf.page=page;
-        [weakSelf scrollViewActionWithPage:page];
+        [weakSelf jumpToPage:page];
     };
 }
 
@@ -203,8 +203,6 @@
     
     _pageModels=pageModels;
     
-    
-    
     //模型检查
     BOOL res=[CorePageModel modelCheck:pageModels];
     
@@ -214,7 +212,6 @@
         
         return;
     }
-    
     
     //数据传递
     self.pagesBarView.pageModels=pageModels;
@@ -360,6 +357,8 @@
 
     if(page>=self.maxPage) page=self.maxPage;
 
+    if(page <=0) page=0;
+    
     _page=page;
     
     //页码传递
@@ -409,10 +408,10 @@
     
     //获取页面
     NSInteger page=(offsetX / width) + .5f;
-    
-    [self handleForPage:page];
 
     self.page=page;
+    
+    [self handleForPage:self.page];
     
     _lastCalWidth=width;
 }
@@ -584,6 +583,10 @@
     [self handleViewLife:NO];
 }
 
-
+/** 中转到指定页码 */
+-(void)jumpToPage:(NSUInteger)jumpPage{
+    self.page = jumpPage;
+    [self scrollViewActionWithPage:self.page];
+}
 
 @end
