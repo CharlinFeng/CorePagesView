@@ -171,6 +171,8 @@
             CGRect frame=btn.bounds;
             
             frame.size.height = height;
+            frame.size.width = self.config.barBtnWidth;
+            
             
             if(index!=0){
                 //获取上一个控件
@@ -182,6 +184,8 @@
                 CGFloat x=CGRectGetMaxX(btnPre.frame) + _config.barBtnMargin;
                 
                 frame.origin.x = x;
+                
+                
             }else{
                 
                 frame.origin.x = _config.barScrollMargin;
@@ -197,6 +201,7 @@
     CGFloat width=CGRectGetMaxX([self.btns.lastObject frame]) + _config.barScrollMargin;
     
     self.contentSize=CGSizeMake(width, 0);
+    
 }
 
 
@@ -233,7 +238,13 @@
     
     //根据btn显示正确的lineView的frame
     BOOL isFirstBtn=_selectedBtn==nil;
-    [self adjustLineViewFrameWithBtn:selectedBtn isFirstBtn:isFirstBtn];
+    if(isFirstBtn){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.25f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self adjustLineViewFrameWithBtn:selectedBtn isFirstBtn:isFirstBtn];
+        });
+    }else{
+        [self adjustLineViewFrameWithBtn:selectedBtn isFirstBtn:isFirstBtn];
+    }
     
     
     _selectedBtn=selectedBtn;

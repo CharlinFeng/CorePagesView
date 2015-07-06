@@ -57,8 +57,8 @@
         //自定义配置
         CorePagesViewConfig *config = [[CorePagesViewConfig alloc] init];
         config.isBarBtnUseCustomWidth = YES;
-        config.barViewH = 80;
-        
+        config.barViewH = 120;
+        config.barBtnWidth = 200;
 
         _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
 

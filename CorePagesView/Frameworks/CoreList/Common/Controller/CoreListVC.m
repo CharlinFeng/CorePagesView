@@ -187,6 +187,14 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    [self.scrollView headerSetState:CoreHeaderViewRefreshStateNorMal];
+}
+
+
 /**
  *  触发顶部刷新
  */
