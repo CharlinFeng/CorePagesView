@@ -31,6 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout=UIRectEdgeNone;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.pagesView jumpToPage:3];
+    });
 }
 
 
@@ -56,10 +60,13 @@
         
         //自定义配置
         CorePagesViewConfig *config = [[CorePagesViewConfig alloc] init];
+        
         config.isBarBtnUseCustomWidth = YES;
-        config.barViewH = 120;
-        config.barBtnWidth = 200;
-
+        
+        config.barBtnWidth = [UIScreen mainScreen].bounds.size.width/4;
+        
+        config.barViewH = 40;
+        
         _pagesView=[CorePagesView viewWithOwnerVC:self pageModels:pageModels config:config];
 
     }
